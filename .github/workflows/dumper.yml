@@ -30,12 +30,15 @@ jobs:
       run: |
         docker rmi `docker images -q`
         sudo rm -rf /usr/share/dotnet /etc/mysql /etc/php /etc/apt/sources.list.d
-        sudo -E apt-get -y purge azure-cli ghc* zulu* hhvm llvm* firefox google* dotnet* powershell openjdk* mysql*
         
     - name: Clone the tools source code
       run: |
        cd ~
-       git clone https://github.com/vm03/payload_dumper.git
+       mkdir payload_dumper
+       ls
+       cd payload_dumper
+       wget -O payload_dumper.py https://github.com/vm03/payload_dumper/raw/refs/heads/master/payload_dumper.py
+       wget -O update_metadata_pb2.py https://github.com/vm03/payload_dumper/raw/refs/heads/master/update_metadata_pb2.py
        
   
     - name: Download the ROM
