@@ -13,23 +13,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-
-    - name: install Python 3.7
-      uses: actions/setup-python@v1
+    - uses: actions/checkout@v4
+    - name: install Python 3.13
+      uses: actions/setup-python@v5
       with:
-          python-version: 3.7
+        python-version: '3.13' 
     - name: Initialization environment 
       run: |
         cd ~
         pip install bsdiff4
-        python -m pip install protobuf
+        pip install protobuf
+        pip install six
+        pip install brotli
 
     - name: Clean Up Disk Space
       run: |
         docker rmi `docker images -q`
         sudo rm -rf /usr/share/dotnet /etc/mysql /etc/php /etc/apt/sources.list.d
         sudo -E apt-get -y purge azure-cli ghc* zulu* hhvm llvm* firefox google* dotnet* powershell openjdk* mysql* php*
-        sudo -E apt-get -y autoremove --purge
+        
         sudo -E apt-get clean 
         
     - name: Clone the tools source code
