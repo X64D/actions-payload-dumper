@@ -56,11 +56,10 @@ jobs:
        cd ~
        cd payload_dumper
        python payload_dumper.py payload.bin
-   
+       
+    - uses: actions/upload-artifact@v4
+      with:
+        path: ~/payload_dumper/output
+        retention-days: 1
 
     
-    - name: Upload the bootimg to WeTransfer
-      run: |
-        cd ~
-        curl -sL https://git.io/file-transfer | sh
-        ./transfer wet ~/payload_dumper/output/boot.img
