@@ -1,11 +1,11 @@
-name: get_bootimg_from_payload.bin
+name: payload_dumper
 
 on:
   watch:
     types: [started]
     
 env:
-  ROM_URL: https://hugeota.d.miui.com/21.3.31/miui_ALIOTH_21.3.31_25fc8f0d66_11.0.zip
+  ROM_URL: https://ota-cdn.lenovo.com/firmware/2024828185240998-6800.zip
   TZ: Asia/Shanghai
 
 jobs:
